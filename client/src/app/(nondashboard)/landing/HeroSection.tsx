@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 
-const HeroSection = () => {
+export const HeroSection = () => {
   return (
     <div className='relative h-screen'>
         <Image src='/landing-splash.jpg' alt='hero' fill priority className='object-cover object-center'/>
@@ -36,4 +36,3 @@ const HeroSection = () => {
   )
 }
 
-export default HeroSection
