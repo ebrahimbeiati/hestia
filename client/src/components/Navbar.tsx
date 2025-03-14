@@ -29,7 +29,7 @@ const Navbar = () => {
             </Button>
           </Link>
           <Link href='/sign-up' scroll={false}>
-            <Button className='px-4 py-2 bg-secondary-600 hover:bg-white rounded-lg hover:text-primary-700'>
+            <Button variant='default' className='px-4 py-2 bg-secondary-600 hover:bg-white rounded-lg hover:text-primary-700'>
               Sign Up
             </Button>
           </Link>
