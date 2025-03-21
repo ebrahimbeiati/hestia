@@ -23,16 +23,23 @@ const Navbar = () => {
           Discover your perfect rental place with our advanced search 
         </p>
         <div className='flex items-center gap-4'>
-          <Link href='/sign-in' scroll={false}>
-            <Button variant='outline' className='px-4 py-2 bg-transparent text-white rounded-lg hover:text-primary-600 '>
-              Sign In
-            </Button>
-          </Link>
-          <Link href='/sign-up' scroll={false}>
-            <Button variant='default' className='px-4 py-2 bg-secondary-600 hover:bg-white rounded-lg hover:text-primary-700'>
-              Sign Up
-            </Button>
-          </Link>
+        <Link href="/signin">
+                <Button
+                  variant="outline"
+                  className="text-white border-white bg-transparent hover:bg-white hover:text-primary-700 rounded-lg"
+                >
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button
+                  variant="secondary"
+                  className="text-white bg-secondary-600 hover:bg-white hover:text-primary-700 rounded-lg"
+                >
+                  Sign Up
+                </Button>
+              </Link>
+         
         </div>
       </div>
 
