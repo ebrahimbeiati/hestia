@@ -1,3 +1,4 @@
+"use client"
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -69,8 +70,8 @@ const Navbar = () => {
          {isDashboard && (<p className='text-primary-200 hidden md:block'>
           Discover your perfect rental place with our advanced search 
         </p>)}
-        <div className='flex items-center gap-4'>
 
+        <div className='flex items-center gap-4'>
           {authUser ? (
             <>
             <div className='relative hidden md:block'>
@@ -95,9 +96,8 @@ const Navbar = () => {
                 onClick={()=>router.push(authUser.userRole?.toLowerCase()=== "manager" ? "/managers/properties":"/tenants/favorites", {scroll:false}
                 )}>
                   Go to Dashboard
-
                 </DropdownMenuItem>
-                <DropdownMenuSeparator className='border-primary-300'/>
+                <DropdownMenuSeparator className='bg-primary-300'/>
                 <DropdownMenuItem className='cursor-pointer hover:!bg-primary-600 hover:!text-primary-100'
                 onClick={()=>router.push(`/${authUser.userRole?.toLowerCase()}s/settings`, {scroll:false}
                 )}>
