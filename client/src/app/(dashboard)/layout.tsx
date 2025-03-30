@@ -25,7 +25,7 @@ const DashboardLayout = ({children}:{children:React.ReactNode}) => {
             }
         }
     },[authUser, pathname, router]);
-    if(isLoading|| authLoading) return <div>Loading...</div>;
+    if(isLoading|| authLoading) return <div>It is loading...</div>;
     if(!authUser?.userRole) return null;
   return (
     <SidebarProvider>
