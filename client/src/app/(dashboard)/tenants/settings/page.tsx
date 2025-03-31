@@ -11,9 +11,8 @@ const TenantSettingsPage = () => {
   const [updateTenant] = useUpdateTenantSettingsMutation();
 
   if (isLoading) return <>It is loading...</>;
-
   const initialData = {
-    name: authUser?.userInfo.name,
+     name: authUser?.userInfo.name,
     email: authUser?.userInfo.email,
     phoneNumber: authUser?.userInfo.phoneNumber
   };
