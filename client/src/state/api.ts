@@ -24,6 +24,7 @@ export const api = createApi({
           const session = await fetchAuthSession();
           const {idToken} = session.tokens ?? {};
           const user = await getCurrentUser();
+          console.log("Current user:", user);
           const userRole = idToken?.payload["custom:role"] as string;
 
           //console.log userdetails
@@ -33,9 +34,12 @@ export const api = createApi({
           : `/tenants/${user.userId}`;
 
           let userDetailsResponse = await fetchWithBQ(endpoint);
+          console.log("User details response:", userDetailsResponse.error);
           if(userDetailsResponse.error && userDetailsResponse.error.status === 404){
             userDetailsResponse = await createNewUserInDatabase(user,idToken,userRole, fetchWithBQ );
           }
+          console.log("User details response:", userDetailsResponse);
+
           return {
             data:{
               cognitoInfo: {...user},

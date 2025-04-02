@@ -4,17 +4,18 @@ import {
   useGetAuthUserQuery,
   useUpdateTenantSettingsMutation,
 } from "@/state/api";
-import SettingBanner from "@/components/SettingBanner";
+import SettingForm from "@/components/SettingForm";
 
-const TenantSettingsPage = () => {
+const TenantSettings = () => {
   const { data: authUser, isLoading } = useGetAuthUserQuery();
   const [updateTenant] = useUpdateTenantSettingsMutation();
 
   if (isLoading) return <>It is loading...</>;
+  console.log('Updating', authUser);
   const initialData = {
-     name: authUser?.userInfo.name,
+    name: authUser?.userInfo.name,
     email: authUser?.userInfo.email,
-    phoneNumber: authUser?.userInfo.phoneNumber
+    phoneNumber: authUser?.userInfo.phoneNumber,
   };
 
   const handleSubmit = async (data: typeof initialData) => {
@@ -25,12 +26,12 @@ const TenantSettingsPage = () => {
     }
   };
   return (
-    <SettingBanner
+    <SettingForm
       initialData={initialData}
       onSubmit={handleSubmit}
       userType="tenant"
-      />
+    />
   );
 };
 
-export default TenantSettingsPage;
+export default TenantSettings;

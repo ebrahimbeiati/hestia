@@ -4,7 +4,7 @@ import {
   useGetAuthUserQuery,
   useUpdateManagerSettingsMutation,
 } from "@/state/api";
-import SettingBanner from "@/components/SettingBanner";
+import SettingForm from "@/components/SettingForm";
 
 const ManagerSettingsPage = () => {
   const { data: authUser, isLoading } = useGetAuthUserQuery();
@@ -15,19 +15,22 @@ const ManagerSettingsPage = () => {
   const initialData = {
     name: authUser?.userInfo.name || "",
     email: authUser?.userInfo.email || "",
-    phoneNumber: authUser?.userInfo.phoneNumber || ""
+    phoneNumber: authUser?.userInfo.phoneNumber || "",
   };
 
   const handleSubmit = async (data: typeof initialData) => {
     try {
-      await updateManager({ cognitoId: authUser?.cognitoInfo?.userId, ...data });
+      await updateManager({
+        cognitoId: authUser?.cognitoInfo?.userId,
+        ...data,
+      });
     } catch (error) {
       console.error("Error updating manager settings:", error);
     }
   };
 
   return (
-    <SettingBanner
+    <SettingForm
       initialData={initialData}
       onSubmit={handleSubmit}
       userType="manager"

@@ -6,7 +6,7 @@ import { Form } from "./ui/form";
 import { CustomFormField } from "./FormField";
 import { Button } from "./ui/button";
 
-const SettingBanner = ({
+const SettingForm = ({
     initialData,
     onSubmit,
     userType
@@ -82,4 +82,4 @@ const SettingBanner = ({
   )
 }
 
-export default SettingBanner
+export default SettingForm
