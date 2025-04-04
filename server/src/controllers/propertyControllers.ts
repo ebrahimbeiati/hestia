@@ -100,7 +100,6 @@ export const getProperties = async (
         }
       }
     }
-    
 
     if (latitude && longitude) {
       const lat = parseFloat(latitude as string);
@@ -117,7 +116,6 @@ export const getProperties = async (
       );
     }
 
-//l = location
     const completeQuery = Prisma.sql`
       SELECT 
         p.*,
@@ -152,7 +150,6 @@ export const getProperties = async (
   }
 };
 
-//get properties
 export const getProperty = async (
   req: Request,
   res: Response
@@ -239,7 +236,7 @@ export const createProperty = async (
     ).toString()}`;
     const geocodingResponse = await axios.get(geocodingUrl, {
       headers: {
-        "User-Agent": "RealEstateApp (ebrahimbeiaty@gmail.com",
+        "User-Agent": "RealEstateApp (justsomedummyemail@gmail.com",
       },
     });
     const [longitude, latitude] =
