@@ -39,12 +39,12 @@ const ContactWidget = ({ onOpenModal }: ContactWidgetProps) => {
 
       <hr className="my-4" />
       <div className="text-sm">
-        <div className="text-primary-600 mb-1">Language: English, Chinese, Spanish, French.</div>
+        <div className="text-primary-600 mb-1">Language: English, Spanish, French, Chinese.</div>
         <div className="text-primary-600">
           Open by appointment on Monday - Sunday
+          <br />
+          9:00 AM - 7:00 PM
         </div>
-        <div className="text-primary-600">9:00 AM - 6:00 PM</div>
-        <div className="text-primary-600">Closed on Holidays</div>
       </div>
     </div>
   );

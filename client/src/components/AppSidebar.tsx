@@ -1,5 +1,5 @@
-"use client";
 import { usePathname } from "next/navigation";
+import React from "react";
 import {
   Sidebar,
   SidebarContent,
@@ -9,8 +9,15 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "./ui/sidebar";
-import React from "react";
-import { Building, FileText, Heart, Home, Menu, Settings, X } from "lucide-react";
+import {
+  Building,
+  FileText,
+  Heart,
+  Home,
+  Menu,
+  Settings,
+  X,
+} from "lucide-react";
 import { NAVBAR_HEIGHT } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -23,13 +30,21 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
     userType === "manager"
       ? [
           { icon: Building, label: "Properties", href: "/managers/properties" },
-          { icon: FileText, label: "Applications", href: "/managers/applications" },
+          {
+            icon: FileText,
+            label: "Applications",
+            href: "/managers/applications",
+          },
           { icon: Settings, label: "Settings", href: "/managers/settings" },
         ]
       : [
-        { icon: Heart, label: "Favorites", href: "/tenants/favorites" },
-          { icon: FileText, label: "Applications", href: "/tenants/applications" },
-         { icon: Home, label: "Residences", href: "/tenants/residences" },
+          { icon: Heart, label: "Favorites", href: "/tenants/favorites" },
+          {
+            icon: FileText,
+            label: "Applications",
+            href: "/tenants/applications",
+          },
+          { icon: Home, label: "Residences", href: "/tenants/residences" },
           { icon: Settings, label: "Settings", href: "/tenants/settings" },
         ];
 
@@ -47,28 +62,28 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
           <SidebarMenuItem>
             <div
               className={cn(
-                "flex items-center justify-between px-4 py-2 cursor-pointer min-h-[56px]",
-                open ? "justify-between" : "justify-center"
+                "flex min-h-[56px] w-full items-center pt-3 mb-3",
+                open ? "justify-between px-6" : "justify-center"
               )}
             >
               {open ? (
                 <>
-                  <h1 className="text-lg font-semibold">
-                    {userType === "manager" ? "Admin Panel" : "User Panel"}
+                  <h1 className="text-xl font-bold text-gray-800">
+                    {userType === "manager" ? "Manager View" : "Renter View"}
                   </h1>
                   <button
-                    onClick={toggleSidebar}
-                    className="rounded-md p-2 hover:bg-gray-100"
+                    className="hover:bg-gray-100 p-2 rounded-md"
+                    onClick={() => toggleSidebar()}
                   >
-                    <X className="w-6 h-6" />
+                    <X className="h-6 w-6 text-gray-600" />
                   </button>
                 </>
               ) : (
                 <button
-                  onClick={toggleSidebar}
-                  className="rounded-md p-2 hover:bg-gray-100"
+                  className="hover:bg-gray-100 p-2 rounded-md"
+                  onClick={() => toggleSidebar()}
                 >
-                  <Menu className="w-6 h-6" />
+                  <Menu className="h-6 w-6 text-gray-600" />
                 </button>
               )}
             </div>
@@ -86,17 +101,28 @@ const AppSidebar = ({ userType }: AppSidebarProps) => {
                 <SidebarMenuButton
                   asChild
                   className={cn(
-                    "flex items-center gap-2 px-4 py-4 w-full ml-2 rounded-md transition-all mb-1",
+                    "flex items-center px-7 py-7",
                     isActive
-                      ? "bg-gray-100 text-blue-600 hover:text-blue-600 "
-                      : "text-gray-600 hover:bg-gray-100 ",
+                      ? "bg-gray-100"
+                      : "text-gray-600 hover:bg-gray-100",
+                    open ? "text-blue-600" : "ml-[5px]"
                   )}
                 >
-                  <Link href={link.href} scroll={false} className="flex items-center gap-4 w-full">
-                    <link.icon className={`h-6 w-6 ${isActive ? "text-blue-600" : "text-gray-600"}`} />
-                    <span className={`font-medium ${isActive ? "text-blue-600" : "text-gray-600"}`}>
-                      {link.label}
-                    </span>
+                  <Link href={link.href} className="w-full" scroll={false}>
+                    <div className="flex items-center gap-3">
+                      <link.icon
+                        className={`h-5 w-5 ${
+                          isActive ? "text-blue-600" : "text-gray-600"
+                        }`}
+                      />
+                      <span
+                        className={`font-medium ${
+                          isActive ? "text-blue-600" : "text-gray-600"
+                        }`}
+                      >
+                        {link.label}
+                      </span>
+                    </div>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

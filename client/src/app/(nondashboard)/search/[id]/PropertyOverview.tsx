@@ -76,12 +76,13 @@ const PropertyOverview = ({ propertyId }: PropertyOverviewProps) => {
         <h2 className="text-xl font-semibold mb-5">About {property.name}</h2>
         <p className="text-gray-500 leading-7">
           {property.description}
-          Good for you to know that the property is located in a prime area
-          with easy access to public transportation and local amenities. The
-          neighborhood is known for its friendly community and vibrant culture.
-          The property features modern appliances, spacious living areas, and
-          beautiful landscaping. Additionally, the property is pet-friendly,
-          making it a great choice for families with furry friends. 
+          This is amazing property with a lot of features and amenities. It is
+          located in a prime location with easy access to public transport and
+          shopping centers. The property has a spacious layout with modern
+          finishes and high-end appliances. The bedrooms are large and
+          comfortable, and the bathrooms are beautifully designed. The kitchen
+          is fully equipped with all the necessary appliances, and there is a
+          large living area perfect for entertaining guests.
         </p>
       </div>
     </div>

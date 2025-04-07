@@ -9,7 +9,7 @@ export const listApplications = async (
 ): Promise<void> => {
   try {
     const { userId, userType } = req.query;
-
+    console.log("📥 Query Params Received:", { userId, userType });
     let whereClause = {};
 
     if (userId && userType) {

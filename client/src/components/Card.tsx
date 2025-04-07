@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 
-const Cards = ({
+const Card = ({
   property,
   isFavorite,
   onFavoriteToggle,
@@ -104,4 +104,4 @@ const Cards = ({
   );
 };
 
-export default Cards;
+export default Card;

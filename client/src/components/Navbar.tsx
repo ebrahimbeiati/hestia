@@ -49,7 +49,7 @@ const Navbar = () => {
         className='md:ml-4 bg-primary-500 text-primary-600 hover:bg-primary-600 hover:text-white'
         onClick={()=>
           router.push(
-            authUser.userRole?.toLowerCase() === 'manager' ? '/managers/newProperty':"/search" 
+            authUser.userRole?.toLowerCase() === 'manager' ? '/managers/newproperty':"/search" 
           )
         }>
           {authUser.userRole?.toLowerCase() === 'manager' ? (

@@ -90,11 +90,9 @@ export const api = createApi({
           propertyType: filters.propertyType,
           squareFeetMin: filters.squareFeet?.[0],
           squareFeetMax: filters.squareFeet?.[1],
-          amenities: filters.amenities?.length ? filters.amenities.join(",") : undefined,
+          amenities: filters.amenities?.join(","),
           availableFrom: filters.availableFrom,
-          // favoriteIds: filters.favoriteIds?.join(","),
-          favoriteIds: filters.favoriteIds?.length ? filters.favoriteIds.join(",") : undefined,
-
+          favoriteIds: filters.favoriteIds?.join(","),
           latitude: filters.coordinates?.[1],
           longitude: filters.coordinates?.[0],
         });

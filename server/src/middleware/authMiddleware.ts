@@ -32,7 +32,7 @@ export const authMiddleware = (allowedRoles: string[]) => {
       req.user = {
         id: decoded.sub,
         role: userRole,
-      }
+      };
 
       const hasAccess = allowedRoles.includes(userRole.toLowerCase());
       if (!hasAccess) {

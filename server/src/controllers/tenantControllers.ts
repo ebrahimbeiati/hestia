@@ -7,15 +7,13 @@ const prisma = new PrismaClient();
 export const getTenant = async (req: Request, res: Response): Promise<void> => {
   try {
     const { cognitoId } = req.params;
-
-
     const tenant = await prisma.tenant.findUnique({
       where: { cognitoId },
       include: {
         favorites: true,
       },
     });
-    console.log("Fetched tenant:", tenant);
+
     if (tenant) {
       res.json(tenant);
     } else {
@@ -137,7 +135,7 @@ export const addFavoriteProperty = async (
     }
 
     const propertyIdNumber = Number(propertyId);
-    const existingFavorites = tenant?.favorites || [];
+    const existingFavorites = tenant.favorites || [];
 
     if (!existingFavorites.some((fav) => fav.id === propertyIdNumber)) {
       const updatedTenant = await prisma.tenant.update({
@@ -151,7 +149,7 @@ export const addFavoriteProperty = async (
       });
       res.json(updatedTenant);
     } else {
-      res.status(409).json({ message: "Property already added as your favorite" });
+      res.status(409).json({ message: "Property already added as favorite" });
     }
   } catch (error: any) {
     res

@@ -1,44 +1,54 @@
-"use client"
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
-import React, { useState } from 'react'
+"use client";
 
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import React, { useState } from "react";
 
-const ImagePreviews = ({images}:ImagePreviewsProps) => {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+const ImagePreviews = ({ images }: ImagePreviewsProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-    const handlePrev = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
-    };
-    const handleNext = () => {
-        setCurrentImageIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
-    }
+  const handlePrev = () => {
+    setCurrentImageIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentImageIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+  };
+
   return (
-    <div className='relative w-full h-[450px]'>
-        {images.map((image, index) => (
-            <div
-            key={image}
-            className={`absolute inset-0 top-0 left-0 w-full h-full transition-opacity duration-500 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
-            }`}
-            >
-            <Image src={image} alt={`Property ${index + 1}`} className='w-full cursor-pointer transition-transform hover:scale-105 h-full object-cover' fill priority={index ==0} />
-            </div>
-        ))}
-        <button
-            className='absolute top-1/2 left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow'
-            onClick={handlePrev}
+    <div className="relative h-[450px] w-full">
+      {images.map((image, index) => (
+        <div
+          key={image}
+          className={`absolute inset-0 transition-opacity duration-500 ease-in-out ${
+            index === currentImageIndex ? "opacity-100" : "opacity-0"
+          }`}
         >
-            <ChevronLeft className='w-6 h-6 text-gray-700' />
-        </button>
-        <button
-            className='absolute top-1/2 right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow'
-            onClick={handleNext}
-        >
-            <ChevronLeft className='w-6 h-6 text-gray-700 rotate-180' />
-        </button>
+          <Image
+            src={image}
+            alt={`Property Image ${index + 1}`}
+            fill
+            priority={index == 0}
+            className="object-cover cursor-pointer transition-transform duration-500 ease-in-out"
+          />
+        </div>
+      ))}
+      <button
+        onClick={handlePrev}
+        className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-primary-700 bg-opacity-50 p-2 rounded-full focus:outline-none focus:ring focus:ring-secondary-300"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="text-white" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-primary-700 bg-opacity-50 p-2 rounded-full focus:outline-none focus:ring focus:ring-secondary-300"
+        aria-label="Previous image"
+      >
+        <ChevronRight className="text-white" />
+      </button>
     </div>
-  )
-}
+  );
+};
 
-export default ImagePreviews
+export default ImagePreviews;
