@@ -1,17 +1,18 @@
 "use client";
-import React from "react";
+
+import SettingsForm from "@/components/SettingsForm";
 import {
   useGetAuthUserQuery,
   useUpdateTenantSettingsMutation,
 } from "@/state/api";
-import SettingForm from "@/components/SettingsForm";
+import React from "react";
 
 const TenantSettings = () => {
   const { data: authUser, isLoading } = useGetAuthUserQuery();
   const [updateTenant] = useUpdateTenantSettingsMutation();
 
-  if (isLoading) return <>It is loading...</>;
-  console.log('Updating', authUser);
+  if (isLoading) return <>Loading...</>;
+
   const initialData = {
     name: authUser?.userInfo.name,
     email: authUser?.userInfo.email,
@@ -19,14 +20,14 @@ const TenantSettings = () => {
   };
 
   const handleSubmit = async (data: typeof initialData) => {
-    try {
-      await updateTenant({ cognitoId: authUser?.cognitoInfo?.userId, ...data });
-    } catch (error) {
-      console.error("Error updating tenant settings:", error);
-    }
+    await updateTenant({
+      cognitoId: authUser?.cognitoInfo?.userId,
+      ...data,
+    });
   };
+
   return (
-    <SettingForm
+    <SettingsForm
       initialData={initialData}
       onSubmit={handleSubmit}
       userType="tenant"
