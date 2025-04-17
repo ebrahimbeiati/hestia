@@ -9,13 +9,13 @@ export const listApplications = async (
 ): Promise<void> => {
   try {
     const { userId, userType } = req.query;
-    console.log("📥 Query Params Received:", { userId, userType });
+
     let whereClause = {};
 
     if (userId && userType) {
       if (userType === "tenant") {
         whereClause = { tenantCognitoId: String(userId) };
-      } else if (userType === "manager") {
+      } else if (userType === "managers") {
         whereClause = {
           property: {
             managerCognitoId: String(userId),

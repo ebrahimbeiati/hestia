@@ -38,7 +38,7 @@ const Applications = () => {
 
   if (isLoading) return <Loading />;
   if (isError || !applications) return <div>Error fetching applications</div>;
-
+  console.log(applications);
   const filteredApplications = applications?.filter((application) => {
     if (activeTab === "all") return true;
     return application.status.toLowerCase() === activeTab;

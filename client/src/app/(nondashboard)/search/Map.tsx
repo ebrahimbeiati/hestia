@@ -22,7 +22,7 @@ const Map = () => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current!,
       style: "mapbox://styles/ebrahim12/cm91q31sy000301qzdgdw0h7w",
-      center: filters.coordinates || [-74.5, 40], // default to London if no coordinates
+      center: filters.coordinates || [-74.5, 40],
       zoom: 9,
     });
 

@@ -9,6 +9,10 @@ import React from "react";
 
 const Applications = () => {
   const { data: authUser } = useGetAuthUserQuery();
+  console.log("🔍 Fetching applications with:", {
+    userId: authUser?.cognitoInfo?.userId,
+    userType: "tenant",
+  });
   const {
     data: applications,
     isLoading,
